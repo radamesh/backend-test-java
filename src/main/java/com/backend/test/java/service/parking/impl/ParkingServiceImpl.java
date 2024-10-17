@@ -27,13 +27,14 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     @Override
-    public ParkingRecord registerExit(String plate) {
-        Optional<ParkingRecord> validateRegister = this.parkingRepository.findByPlateAndEstacionadoTrue(plate);
+    public ParkingRecord registerExit(ParkingRecord parkingRecord) {
+        Optional<ParkingRecord> validateRegister = this.parkingRepository.findByPlateAndEstacionadoTrue(parkingRecord.getPlate());
 
         if (validateRegister.isPresent()) {
             ParkingRecord existinParkingRecord = validateRegister.get();
             existinParkingRecord.setEstacionado(false);
             existinParkingRecord.setExitTime(LocalDateTime.now());
+            existinParkingRecord.setPayment(parkingRecord.getPayment());
             return this.parkingRepository.save(existinParkingRecord);
         } else {
             throw new IllegalArgumentException("O veículo não está estacionado.");

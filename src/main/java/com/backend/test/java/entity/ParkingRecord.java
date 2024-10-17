@@ -31,6 +31,9 @@ public class ParkingRecord implements Serializable {
     @Column(nullable = false)
     private Boolean estacionado = Boolean.FALSE;
 
+    @Column(nullable = true)
+    private Double payment;
+
     @Column(nullable = false)
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

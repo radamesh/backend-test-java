@@ -32,16 +32,15 @@ public class EstablishmentServiceImpl implements EstablishmentService {
 
     @Override
     public Establishment updateEstablishment(Long id, Establishment establishment) {
-        var getEstablishment = this.establishmentRepository.findById(id).orElse(null);
-        getEstablishment.builder()
-                .name(establishment.getName())
-                .cnpj(establishment.getCnpj())
-                .address(establishment.getAddress())
-                .phone(establishment.getPhone())
-                .email(establishment.getEmail())
-                .spacesForMotorcycles(establishment.getSpacesForMotorcycles())
-                .spacesForCars(establishment.getSpacesForCars())
-                .build();
+        Establishment getEstablishment = this.establishmentRepository.findById(id).orElse(null);
+        getEstablishment.setName(establishment.getName());
+        getEstablishment.setCnpj(establishment.getCnpj());
+        getEstablishment.setAddress(establishment.getAddress());
+        getEstablishment.setPhone(establishment.getPhone());
+        getEstablishment.setEmail(establishment.getEmail());
+        getEstablishment.setSpacesForMotorcycles(establishment.getSpacesForMotorcycles());
+        getEstablishment.setSpacesForCars(establishment.getSpacesForCars());
+
         return this.establishmentRepository.save(getEstablishment);
     }
 

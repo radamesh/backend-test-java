@@ -33,13 +33,11 @@ public class VehicleServiceImpl implements VehiclesService {
     @Override
     public Vehicle updateVehicle(Long id, Vehicle vehicle) {
         Vehicle getVehicle = this.vehicleRepository.findById(id).orElse(null);
-        getVehicle.builder()
-            .brand(vehicle.getBrand())
-            .model(vehicle.getModel())
-            .color(vehicle.getColor())
-            .plate(vehicle.getPlate())
-            .type(vehicle.getType())
-            .build();
+        getVehicle.setBrand(vehicle.getBrand());
+        getVehicle.setModel(vehicle.getModel());
+        getVehicle.setColor(vehicle.getColor());
+        getVehicle.setPlate(vehicle.getPlate());
+        getVehicle.setType(vehicle.getType());
 
         return this.vehicleRepository.save(getVehicle);
     }

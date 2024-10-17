@@ -21,8 +21,8 @@ public class ParkingController {
         return parkingService.registerEntry(record);
     }
 
-    @PutMapping("/exit/{plate}")
-    public ParkingRecord registerExit(@PathVariable String plate) {
-        return parkingService.registerExit(plate);
+    @PutMapping("/exit")
+    public ParkingRecord registerExit(@RequestBody @Validated ParkingRecord record) {
+        return parkingService.registerExit(record);
     }
 }
