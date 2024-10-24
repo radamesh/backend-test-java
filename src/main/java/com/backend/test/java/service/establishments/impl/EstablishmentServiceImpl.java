@@ -33,7 +33,7 @@ public class EstablishmentServiceImpl implements EstablishmentService {
     @Override
     public Establishment updateEstablishment(Long id, Establishment establishment) {
         Establishment getEstablishment = this.establishmentRepository.findById(id).orElse(null);
-        getEstablishment.setName(establishment.getName());
+        getEstablishment.setName(establishment .getName());
         getEstablishment.setCnpj(establishment.getCnpj());
         getEstablishment.setAddress(establishment.getAddress());
         getEstablishment.setPhone(establishment.getPhone());
